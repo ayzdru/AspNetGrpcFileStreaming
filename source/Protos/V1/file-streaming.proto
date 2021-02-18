@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+option csharp_namespace = "AspNetGrpcFileStreaming.V1.FileStreaming";
+
+package FileStreaming;
+import "google/protobuf/empty.proto";
+service FileStreamingService {
+    rpc Download (FileInfo) returns (stream BytesContent);
+    rpc Upload (stream BytesContent) returns(google.protobuf.Empty);
+}
+message FileInfo{
+    string fileName = 1;
+    string fileExtension = 2;
+}
+message BytesContent{
+    int64 fileSize = 1;
+    bytes buffer = 2;
+    int32 readedByte = 3;
+    FileInfo info = 4;
+}

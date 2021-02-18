@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+	<ItemGroup>
+		<Protobuf Include="..\Protos\**\*.*">
+			<Link>Protos\%(RecursiveDir)%(FileName)%(Extension)</Link>
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+			<CopyToPublishDirectory>Always</CopyToPublishDirectory>
+		</Protobuf>
+
+		<PackageReference Include="Google.Protobuf" Version="3.14.0" />
+		<PackageReference Include="Grpc.Net.Client" Version="2.35.0" />
+		<PackageReference Include="Grpc.Tools" Version="2.35.0" PrivateAssets="All" />
+	</ItemGroup>
+	<ItemGroup>
+	  <Folder Include="Files\" />
+	</ItemGroup>
+	<ItemGroup>
+	  <None Update="Files\sample.mp4">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	</ItemGroup>
+</Project>
